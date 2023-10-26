@@ -1,0 +1,19 @@
+<section class="education__container container">
+  <article></article>
+  <article class="certification__container">
+    <h2>Certificaciones</h2>
+
+    <div class="certification__card">
+      <app-atropos
+        *ngFor="let certification of certifications()"
+        [education]="certification.attributes"
+        [clase]="certification.attributes.class"
+        [isPrimary]="false"
+      />
+
+      <!-- <div *ngFor="let item of certifications()">
+        <h2>{{ item.attributes.name }}</h2>
+      </div> -->
+    </div>
+  </article>
+</section>

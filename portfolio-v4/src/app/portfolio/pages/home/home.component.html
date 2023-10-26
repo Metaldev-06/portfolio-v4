@@ -1,0 +1,9 @@
+<ng-container *ngIf="userData().projects">
+  <app-hero-section />
+
+  <app-about-me-section [aboutMe]="userData()" />
+
+  <app-projects-section [projects]="userData().projects.data" />
+
+  <app-blogs-section />
+</ng-container>

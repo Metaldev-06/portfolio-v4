@@ -1,0 +1,20 @@
+@import "src/_variables.scss";
+
+.home__container {
+
+  .post__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+.example {
+  width: 1400px;
+  margin: 0 auto;
+  border-radius: $border-radius-x2;
+  overflow: hidden;
+}

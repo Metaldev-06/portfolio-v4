@@ -1,0 +1,18 @@
+@import "src/_variables.scss";
+
+.education__container {
+  .certification__container {
+
+    h2 {
+      padding-bottom: 2rem;
+    }
+
+    .certification__card {
+      width: 100%;
+      display: grid;
+      grid-auto-rows: 300px;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 1rem;
+    }
+  }
+}

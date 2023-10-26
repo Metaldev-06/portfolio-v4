@@ -1,0 +1,25 @@
+<section class="projects__container container">
+  <div class="titlte__container">
+    <app-title [title]="'proyectos'" />
+  </div>
+
+  <article class="projects__card--container">
+    <div
+      class="card"
+      *ngFor="let project of projects()"
+      (click)="openDialog(project.attributes)"
+    >
+      <div class="card__image">
+        <img
+          [ngSrc]="project.attributes.image | imagePipe"
+          [alt]="project.attributes.name"
+          fill
+        />
+      </div>
+
+      <div class="card__text">
+        <h3>{{ project.attributes.name | titlecase }}</h3>
+      </div>
+    </div>
+  </article>
+</section>

@@ -1,0 +1,12 @@
+@import "src/_variables.scss";
+
+.blog__container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $background-blog;
+  z-index: 1;
+  position: relative;
+}

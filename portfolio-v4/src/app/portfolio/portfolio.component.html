@@ -1,0 +1,11 @@
+<div class="portfolio__container">
+  <ng-container *ngIf="!loading()">
+    <app-header />
+
+    <main>
+      <router-outlet />
+    </main>
+
+    <app-footer />
+  </ng-container>
+</div>
