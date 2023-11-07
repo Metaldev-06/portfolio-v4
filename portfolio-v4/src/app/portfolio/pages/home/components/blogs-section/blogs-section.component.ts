@@ -39,7 +39,7 @@ export class BlogsSectionComponent {
 
   getPosts() {
     this.blogDataService
-      .getPosts()
+      .getLatestPosts()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.posts.set(res.data);

@@ -9365,6 +9365,11 @@ strapi-plugin-comments@^2.2.15:
     match-sorter "^4.0.2"
     styled-components "^5.3.8"
 
+strapi-plugin-oembed@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/strapi-plugin-oembed/-/strapi-plugin-oembed-1.1.0.tgz#6fa28153162b73eee210435574355061126ef38b"
+  integrity sha512-CcPq72jq6H39pJRzlE5vdOUdBVrO0EHdvLiS4dG3MaCcc9bLwGYT79Vxl4dxGGTqFIK3KZS6zX7edLnZZnGDPQ==
+
 strapi-plugin-ppt-customfields@^1.0.17:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/strapi-plugin-ppt-customfields/-/strapi-plugin-ppt-customfields-1.0.17.tgz#93e45b96301ff0a34abc4035fb2bbf50a039877e"

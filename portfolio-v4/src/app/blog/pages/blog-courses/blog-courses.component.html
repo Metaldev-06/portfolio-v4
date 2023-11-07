@@ -1,27 +1,26 @@
 <section class="courses__container container">
   <article></article>
   <article class="courses__card--container">
-    <ng-container *ngFor="let course of courses(); let first = first">
-      <div class="courses__card" *ngIf="!first">
+    <ng-container *ngFor="let course of courses()">
+      <div class="courses__card">
         <div class="course__image">
           <img
-            [src]="course.snippet.thumbnails.medium.url"
-            [alt]="course.snippet.title"
+            [src]="course.attributes.image.data.attributes.formats.medium.url"
+            [alt]="course.attributes.title"
           />
         </div>
 
         <div class="course__text">
-          <p>{{ course.snippet.title }}</p>
+          <p>{{ course.attributes.title }}</p>
 
           <div class="button__container">
-            <button class="button custom__button--line">
-              <a
-                [href]="'https://www.youtube.com/watch?v=' + course.id.videoId"
-                target="_blank"
-              >
-                Ver video
-              </a>
-            </button>
+            <a
+              [href]="course.attributes.url"
+              aria-label="Ver video"
+              target="_blank"
+            >
+              <button class="button custom__button--line">Ver video</button>
+            </a>
           </div>
         </div>
       </div>

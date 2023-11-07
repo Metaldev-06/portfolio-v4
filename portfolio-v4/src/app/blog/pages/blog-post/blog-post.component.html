@@ -1,7 +1,7 @@
 <section class="post__container container" *ngIf="post()">
   <article class="header__post">
-    <div class="image__container">
-      <img [src]="post().image.data.attributes.url" alt="" />
+    <div class="image__container" *ngIf="post().image">
+      <img [src]="post().image.data.attributes.url" [alt]="post().title" />
     </div>
 
     <div class="text__container">
@@ -25,9 +25,6 @@
       [data]="post().postExample"
       [clipboardButtonComponent]="clipboardButton"
       clipboard
-    >
-      >
-      <!-- <app-clipboard-button /> -->
-    </markdown>
+    ></markdown>
   </article>
 </section>

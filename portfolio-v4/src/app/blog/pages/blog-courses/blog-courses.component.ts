@@ -8,7 +8,7 @@ import {
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Item } from '@src/app/core/interfaces/course-data/course-data';
+import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 
 @Component({
@@ -20,7 +20,7 @@ import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.serv
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogCoursesComponent implements OnInit {
-  public courses = signal<Item[]>([]);
+  public courses = signal<Datum[]>([]);
 
   private readonly blogDataService = inject(BlogDataService);
   private readonly destroyRef = inject(DestroyRef);
@@ -34,7 +34,7 @@ export class BlogCoursesComponent implements OnInit {
       .getCoursesByYoutube()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
-        this.courses.set(res.items);
+        this.courses.set(res.data);
       });
   }
 }

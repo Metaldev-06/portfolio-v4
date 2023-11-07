@@ -23,11 +23,37 @@
     </nav>
 
     <div class="search__container">
-      <input type="text" placeholder="Buscar..." />
+      <app-searcher (query)="searchByTitle($event)" />
     </div>
 
-    <div class="user__container">
+    <div class="user__container" (click)="op.toggle($event)">
       <i class="pi pi-user"></i>
     </div>
   </div>
 </header>
+
+<ng-template #userAutenticate>
+  <div class="user__container" (click)="op.toggle($event)">
+    <i class="pi pi-user"></i>
+  </div>
+</ng-template>
+
+<p-overlayPanel #op>
+  <div class="user__menu">
+    <div
+      class="user__menu--item"
+      *ngFor="let item of userMenu"
+      [routerLink]="[item.route]"
+    >
+      <i [class]="item.icon"></i>
+      <span>
+        {{ item.name | titlecase }}
+      </span>
+    </div>
+
+    <div class="user__menu--item sign__out">
+      <i class="pi pi-sign-out"></i>
+      <span>Cerrar Sesión</span>
+    </div>
+  </div>
+</p-overlayPanel>

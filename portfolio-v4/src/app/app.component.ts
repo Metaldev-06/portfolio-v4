@@ -32,7 +32,7 @@ export class AppComponent {
   getAnimationState() {
     // Lógica para determinar el estado de la animación según la URL actual o cualquier otra condición
 
-    if (this.router.url.includes('/products')) {
+    if (this.router.url.includes('/blog/searcher')) {
       return 'no-animation'; // Devuelve un estado especial para la ruta /products
     }
 

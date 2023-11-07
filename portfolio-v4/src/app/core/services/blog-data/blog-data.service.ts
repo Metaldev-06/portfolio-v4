@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from '@src/environments/environment.development';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { PostData } from '../../interfaces/post-data/post-data';
 import { CourseData } from '../../interfaces/course-data/course-data';
 
@@ -10,9 +10,30 @@ import { CourseData } from '../../interfaces/course-data/course-data';
 })
 export class BlogDataService {
   private readonly apiUrl = environment.apiUrl;
-  private readonly apiUrlYoutube = environment.apiUrlYoutube;
+
+  private blogData: BehaviorSubject<PostData> = new BehaviorSubject(
+    {} as PostData
+  );
+  public blogData$ = this.blogData.asObservable();
 
   private readonly http = inject(HttpClient);
+
+  constructor() {
+    const blogDataStorage = sessionStorage.getItem('blogData');
+
+    if (blogDataStorage) {
+      this.blogData.next(JSON.parse(blogDataStorage));
+    }
+  }
+
+  setBlogData(data: PostData) {
+    sessionStorage.setItem('blogData', JSON.stringify(data));
+    this.blogData.next(data);
+  }
+
+  clearBlogData() {
+    sessionStorage.removeItem('blogData');
+  }
 
   private getCommonParams(): HttpParams {
     return new HttpParams()
@@ -24,8 +45,11 @@ export class BlogDataService {
       .set('populate[image][fields][5]', 'formats');
   }
 
-  getPosts(): Observable<PostData> {
-    const params = this.getCommonParams();
+  getPosts(page = 1): Observable<PostData> {
+    let params = this.getCommonParams()
+      .set('sort', 'publishedAt:desc')
+      .set('pagination[pageSize]', '8')
+      .set('pagination[page]', page);
 
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
@@ -40,19 +64,34 @@ export class BlogDataService {
 
   getLatestPosts(): Observable<PostData> {
     const params = this.getCommonParams()
-      .set('sort', 'createdAt:desc')
-      .set('pagination[limit]', '3');
+      .set('sort', 'publishedAt:desc')
+      .set('pagination[limit]', '4');
 
     return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
   }
 
   getCoursesByYoutube(): Observable<CourseData> {
-    const params = new HttpParams()
-      .set('key', 'AIzaSyC0XqLWPPEplpA4bkmmVG6M-t02Jz9d_o4')
-      .set('channelId', 'UCp4yKcVtJW91gj8pC3MVtng')
-      .set('part', 'snippet');
-    return this.http.get<CourseData>(`${this.apiUrlYoutube}/search`, {
+    const params = new HttpParams().set('populate', '*');
+
+    return this.http.get<CourseData>(`${this.apiUrl}/courses`, {
       params,
     });
+  }
+
+  searchPost(query: string): Observable<PostData> {
+    const params = this.getCommonParams()
+      .set('filters[$or][0][title][$containsi]', query)
+      .set('filters[$or][1][technology][$containsi]', query)
+      .set('pagination[limit]', '5');
+    return this.http.get<PostData>(`${this.apiUrl}/posts`, { params });
+  }
+
+  searchCourse(query: string): Observable<CourseData> {
+    const params = new HttpParams()
+      .set('filters[$or][0][title][$containsi]', query)
+      .set('filters[$or][1][technology][$containsi]', query)
+      .set('populate', '*')
+      .set('pagination[limit]', '5');
+    return this.http.get<CourseData>(`${this.apiUrl}/courses`, { params });
   }
 }

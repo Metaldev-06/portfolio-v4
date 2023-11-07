@@ -13,10 +13,13 @@
 
   .blogs__card--container {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 1rem;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: baseline;
+    // flex-wrap: wrap;
+    // gap: 1rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }

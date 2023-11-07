@@ -34,6 +34,20 @@ export const blogRoutes: Routes = [
             (c) => c.blogRoutesRoutes
           ),
       },
+      {
+        path: 'searcher',
+        loadChildren: () =>
+          import('./pages/blog-searcher/blog-searcher.routes').then(
+            (c) => c.blogSearcherRoutes
+          ),
+      },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./pages/blog-users/blog-users.routes').then(
+            (c) => c.blogUserRoutes
+          ),
+      },
     ],
   },
 ];

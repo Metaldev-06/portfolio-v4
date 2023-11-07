@@ -2,6 +2,7 @@ import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { routes } from './app.routes';
 import { ClipboardOptions, MarkdownModule } from 'ngx-markdown';
@@ -27,6 +28,9 @@ export const appConfig: ApplicationConfig = {
           },
         },
       }),
+
+      FormsModule,
+      ReactiveFormsModule,
     ]),
     provideAnimations(),
     {

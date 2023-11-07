@@ -47,8 +47,4 @@ export class BlogPostComponent implements OnInit {
         this.post.set(res.data[0].attributes);
       });
   }
-
-  onCopyToClipboard() {
-    alert('Copied');
-  }
 }

@@ -1,6 +1,8 @@
 @import "src/_variables.scss";
 
 .courses__container {
+  min-height: calc(100vh - 252px);
+  margin: 4rem auto;
 
   .courses__card--container {
     width: 100%;
