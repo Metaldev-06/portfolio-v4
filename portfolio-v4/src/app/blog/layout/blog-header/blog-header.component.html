@@ -26,9 +26,13 @@
       <app-searcher (query)="searchByTitle($event)" />
     </div>
 
-    <div class="user__container" (click)="op.toggle($event)">
+    <!-- <div class="user__container" (click)="op.toggle($event)">
       <i class="pi pi-user"></i>
-    </div>
+    </div> -->
+  </div>
+
+  <div class="search__container secondary__search">
+    <app-searcher (query)="searchByTitle($event)" />
   </div>
 </header>
 

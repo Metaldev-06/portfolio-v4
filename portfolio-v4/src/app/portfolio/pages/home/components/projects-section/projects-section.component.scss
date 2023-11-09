@@ -15,6 +15,11 @@
     grid-auto-flow: dense;
     gap: 1rem;
 
+    @include media-up(tabletXS) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
     .card {
       width: 100%;
       border-radius: $border-radius-x1;
@@ -26,6 +31,10 @@
       gap: 0.5rem;
       position: relative;
       overflow: hidden;
+
+      @include media-up(tabletXS) {
+        height: 300px;
+      }
 
       img {
         width: 100%;

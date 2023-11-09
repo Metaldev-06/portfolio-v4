@@ -1,15 +1,33 @@
 <section class="home__container">
   <article class="image__container">
-    <img src="assets/banner__blog.jpg" alt="background" />
-  </article>
-  <article class="post__container container">
-    <h1>Últimos Post</h1>
-    <div class="card__container" *ngIf="posts(); else skeleton">
-      <app-card-post *ngFor="let post of posts()" [post]="post" />
+    <img src="assets/banner__background.jpg" alt="background" />
+
+    <div class="banner__content">
+      <div class="text__container">
+        <h1>
+          Aprende <br />
+          las buenas prácticas
+        </h1>
+        <p>Tu lugar para aprender programación web</p>
+      </div>
+
+      <div class="image__container--banner">
+        <img src="assets/banner__background--logo.png" alt="background image" />
+      </div>
     </div>
   </article>
 
-  <div class="button__container">
+  <article class="post__container container">
+    <h2>Últimos Post</h2>
+    <div class="card__container" *ngIf="posts(); else skeleton">
+      <app-card-post
+        *ngFor="let post of posts(); index as index; trackBy: trackByFn"
+        [post]="post"
+      />
+    </div>
+  </article>
+
+  <div class="button__container" *ngIf="showButtonPage()">
     <button
       class="button custom__button--line"
       (click)="nextPage()"

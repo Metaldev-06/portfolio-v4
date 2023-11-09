@@ -38,6 +38,10 @@ export class BlogHomeComponent implements OnInit {
     this.getPosts();
   }
 
+  trackByFn(index: number, item: PostDatum) {
+    return index;
+  }
+
   getPosts(page = 1) {
     this.blogDataService.blogData$
       .pipe(takeUntilDestroyed(this.destroyRef))

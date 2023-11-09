@@ -5,7 +5,10 @@ import {
   signal,
   HostListener,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+
+import { SidebarModule } from 'primeng/sidebar';
 
 interface NavItem {
   name: string;
@@ -15,13 +18,23 @@ interface NavItem {
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, UpperCasePipe, NgClass, NgFor],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    UpperCasePipe,
+    NgClass,
+    NgFor,
+    SidebarModule,
+    FormsModule,
+  ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   public headerFixed!: Boolean;
+
+  public sidebarVisible2: boolean = false;
 
   public navItems = signal<NavItem[]>([
     {

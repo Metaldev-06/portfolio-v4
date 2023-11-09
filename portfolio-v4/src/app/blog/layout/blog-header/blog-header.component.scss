@@ -4,9 +4,18 @@
   width: 100%;
   height: 60px;
   background-color: $header-blog;
+
   // position: fixed;
   // top: 0;
   // z-index: 1000;
+  @include media-up(mobile) {
+    height: auto;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+  }
 
   .header__content {
     width: 95%;
@@ -48,6 +57,10 @@
 
     .search__container {
       width: clamp(200px, 50%, 400px);
+
+      @include media-up(mobile) {
+        display: none;
+      }
     }
 
     .user__container {
@@ -55,6 +68,8 @@
       border-radius: $border-radius-x1;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
+
+
 
       i {}
 
@@ -66,6 +81,14 @@
         background-color: $color-white;
         color: $color-black;
       }
+    }
+  }
+
+  .secondary__search {
+    display: none;
+
+    @include media-up(mobile) {
+      display: block;
     }
   }
 }
