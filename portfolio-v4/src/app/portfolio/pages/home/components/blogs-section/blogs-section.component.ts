@@ -1,4 +1,4 @@
-import { NgFor, NgOptimizedImage } from '@angular/common';
+import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 import { CardPostComponent } from '@src/app/shared/card-post/card-post.component';
+import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/skeleton-post-card.component';
 import { TitleComponent } from '@src/app/shared/title/title.component';
 
 @Component({
@@ -22,6 +23,8 @@ import { TitleComponent } from '@src/app/shared/title/title.component';
     TitleComponent,
     RouterLink,
     CardPostComponent,
+    SkeletonPostCardComponent,
+    NgIf,
   ],
   templateUrl: './blogs-section.component.html',
   styleUrls: ['./blogs-section.component.scss'],

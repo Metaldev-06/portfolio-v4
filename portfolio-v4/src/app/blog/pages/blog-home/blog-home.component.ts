@@ -14,13 +14,21 @@ import {
 } from '@src/app/core/interfaces/post-data/post-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 import { CardPostComponent } from '@src/app/shared/card-post/card-post.component';
+import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/skeleton-post-card.component';
 
 import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
   selector: 'app-blog-home',
   standalone: true,
-  imports: [CardPostComponent, NgFor, SkeletonModule, NgIf, NgStyle],
+  imports: [
+    CardPostComponent,
+    NgFor,
+    SkeletonModule,
+    NgIf,
+    NgStyle,
+    SkeletonPostCardComponent,
+  ],
   templateUrl: './blog-home.component.html',
   styleUrls: ['./blog-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -28,7 +36,6 @@ import { SkeletonModule } from 'primeng/skeleton';
 export class BlogHomeComponent implements OnInit {
   public posts = signal<PostDatum[]>([]);
   public page = signal<Pagination>({} as Pagination);
-  public items = [1, 2, 3, 4, 5, 6, 7, 8];
   public showButtonPage = signal<boolean>(true);
 
   private readonly blogDataService = inject(BlogDataService);
