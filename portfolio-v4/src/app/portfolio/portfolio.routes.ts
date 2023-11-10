@@ -30,6 +30,12 @@ export const portfolioRoutes: Routes = [
             (c) => c.educationRoutes
           ),
       },
+
+      {
+        path: 'contact',
+        loadChildren: () =>
+          import('./pages/contact/contact.routes').then((c) => c.contactRoutes),
+      },
     ],
   },
 ];
