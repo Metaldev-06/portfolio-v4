@@ -19,6 +19,11 @@
     align-items: flex-start;
     gap: 1rem;
 
+    @include media-up(screenXs) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
     .post__container,
     .courses__container {
       display: flex;
@@ -53,6 +58,7 @@
         .image__container {
           width: 100%;
           max-width: 150px;
+          min-width: 150px;
 
           img {
             width: 100%;
@@ -81,6 +87,7 @@
             justify-content: flex-start;
             align-items: center;
             gap: .5rem;
+            flex-wrap: wrap;
 
             .badge {
               padding: .3rem .5rem;

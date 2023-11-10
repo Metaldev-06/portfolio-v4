@@ -46,5 +46,7 @@ export class BlogPostComponent implements OnInit {
       .subscribe((res) => {
         this.post.set(res.data[0].attributes);
       });
+
+    document.documentElement.scrollTop = 0;
   }
 }

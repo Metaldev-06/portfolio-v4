@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BlogHeaderComponent } from './layout/blog-header/blog-header.component';
 import { FooterComponent } from '../portfolio/layout/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
@@ -11,4 +11,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./blog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogComponent {}
+export class BlogComponent implements OnInit {
+  ngOnInit(): void {
+    document.documentElement.scrollTop = 0;
+  }
+}

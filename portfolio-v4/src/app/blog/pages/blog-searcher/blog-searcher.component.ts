@@ -32,6 +32,8 @@ export class BlogSearcherComponent implements OnInit {
 
   ngOnInit(): void {
     this.getQueryParams();
+
+    document.documentElement.scrollTop = 0;
   }
 
   private getQueryParams(): void {

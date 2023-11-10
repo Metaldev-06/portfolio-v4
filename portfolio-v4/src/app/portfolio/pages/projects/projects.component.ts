@@ -44,6 +44,8 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjects();
+
+    document.documentElement.scrollTop = 0;
   }
 
   getProjects() {

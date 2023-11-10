@@ -27,6 +27,8 @@ export class BlogCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCourses();
+
+    document.documentElement.scrollTop = 0;
   }
 
   getCourses() {

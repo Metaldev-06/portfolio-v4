@@ -48,6 +48,11 @@ export const blogRoutes: Routes = [
             (c) => c.blogUserRoutes
           ),
       },
+
+      {
+        path: '**',
+        redirectTo: '',
+      },
     ],
   },
 ];

@@ -36,6 +36,12 @@ export class BlogHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPosts();
+
+    if (this.page().page === this.page().pageCount) {
+      this.showButtonPage.set(false);
+    }
+
+    document.documentElement.scrollTop = 0;
   }
 
   trackByFn(index: number, item: PostDatum) {

@@ -33,6 +33,8 @@ export class SkillsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProjects();
+
+    document.documentElement.scrollTop = 0;
   }
 
   getProjects() {

@@ -28,6 +28,8 @@ export class EducationComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCertifications();
+
+    document.documentElement.scrollTop = 0;
   }
 
   getCertifications() {

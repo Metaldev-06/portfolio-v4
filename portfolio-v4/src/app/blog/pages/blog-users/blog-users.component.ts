@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,8 +7,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './blog-users.component.html',
   styleUrls: ['./blog-users.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogUsersComponent {
-
+export class BlogUsersComponent implements OnInit {
+  ngOnInit(): void {
+    document.documentElement.scrollTop = 0;
+  }
 }
