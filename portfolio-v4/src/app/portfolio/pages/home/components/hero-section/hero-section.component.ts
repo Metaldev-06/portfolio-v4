@@ -1,10 +1,10 @@
+import { NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   HostListener,
   signal,
 } from '@angular/core';
-import { NgFor, NgStyle } from '@angular/common';
 
 interface Image {
   name: string;
@@ -17,9 +17,9 @@ interface Image {
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [NgStyle, NgFor],
+  imports: [NgStyle],
   templateUrl: './hero-section.component.html',
-  styleUrls: ['./hero-section.component.scss'],
+  styleUrl: './hero-section.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroSectionComponent {

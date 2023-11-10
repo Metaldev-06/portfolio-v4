@@ -11,14 +11,15 @@
 
     <nav class="nav__container">
       <ul>
+        @for (item of navItem; track item) {
         <li
-          *ngFor="let item of navItem"
           [routerLink]="[item.route]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           {{ item.name | titlecase }}
         </li>
+        }
       </ul>
     </nav>
 
@@ -44,16 +45,14 @@
 
 <p-overlayPanel #op>
   <div class="user__menu">
-    <div
-      class="user__menu--item"
-      *ngFor="let item of userMenu"
-      [routerLink]="[item.route]"
-    >
+    @for (item of userMenu; track item) {
+    <div class="user__menu--item" [routerLink]="[item.route]">
       <i [class]="item.icon"></i>
       <span>
         {{ item.name | titlecase }}
       </span>
     </div>
+    }
 
     <div class="user__menu--item sign__out">
       <i class="pi pi-sign-out"></i>

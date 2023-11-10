@@ -1,41 +1,39 @@
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
-  OnInit,
   inject,
   signal,
 } from '@angular/core';
-import { NgFor, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
-import { Dialog, DialogModule } from '@angular/cdk/dialog';
-
-import { HomeDataService } from '@src/app/core/services/home-data/home-data.service';
-import { ImagePipe } from '@src/app/shared/pipes/image-pipe/image-pipe.pipe';
-import { TitleComponent } from '@src/app/shared/title/title.component';
-import { DialogComponent } from '@src/app/shared/dialog/dialog.component';
 import {
   ProjectsDatum,
   TentacledAttributes,
 } from '@src/app/core/interfaces/home-data/home-data';
+import { HomeDataService } from '@src/app/core/services/home-data/home-data.service';
+import { DialogComponent } from '@src/app/shared/dialog/dialog.component';
+import { ImagePipe } from '@src/app/shared/pipes/image-pipe/image-pipe.pipe';
+import { SkeletonCardImageComponent } from '@src/app/shared/skeleton-card-image/skeleton-card-image.component';
+import { TitleComponent } from '@src/app/shared/title/title.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
   imports: [
     NgOptimizedImage,
-    NgFor,
     ImagePipe,
     TitleCasePipe,
     TitleComponent,
     DialogModule,
+    SkeletonCardImageComponent,
   ],
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss'],
+  styleUrl: './projects.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent {
   public projects = signal<ProjectsDatum[]>([]);
 
   private readonly dialog = inject(Dialog);

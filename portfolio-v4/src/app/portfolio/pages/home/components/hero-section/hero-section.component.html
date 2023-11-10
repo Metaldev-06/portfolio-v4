@@ -1,13 +1,15 @@
 <section class="hero__container">
   <article class="hero__content">
     <div class="redes">
-      <a [href]="social.url" *ngFor="let social of socials()" target="_blank"
+      @for (social of socials(); track social) {
+      <a [href]="social.url" target="_blank"
         ><img
           [src]="social.path"
           [alt]="social.name"
           [width]="social.width"
           [height]="social.height"
       /></a>
+      }
     </div>
 
     <div class="scroll">SCROLL</div>

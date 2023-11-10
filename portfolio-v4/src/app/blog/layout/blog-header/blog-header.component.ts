@@ -1,10 +1,5 @@
-import { NgFor, TitleCasePipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { TitleCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { SearcherComponent } from '@src/app/shared/searcher/searcher.component';
 
@@ -14,7 +9,6 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
   selector: 'app-blog-header',
   standalone: true,
   imports: [
-    NgFor,
     TitleCasePipe,
     RouterLink,
     RouterLinkActive,
@@ -22,10 +16,10 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     OverlayPanelModule,
   ],
   templateUrl: './blog-header.component.html',
-  styleUrls: ['./blog-header.component.scss'],
+  styleUrl: './blog-header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogHeaderComponent implements OnInit {
+export class BlogHeaderComponent {
   public navItem = [
     {
       name: 'inicio',

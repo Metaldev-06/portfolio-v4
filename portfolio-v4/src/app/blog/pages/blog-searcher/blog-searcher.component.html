@@ -1,22 +1,17 @@
 <section class="searcher__container container">
-  <article *ngIf="posts().length === 0 && courses().length === 0">
+  @if (posts().length === 0 && courses().length === 0) {
+  <article>
     <h1>
       No se ha encontrado nada con: <span class="query">"{{ query() }}"</span>
     </h1>
   </article>
-
-  <article
-    class="searcher__card--container"
-    *ngIf="posts().length > 0 || courses().length > 0"
-  >
+  } @if (posts().length > 0 || courses().length > 0) {
+  <article class="searcher__card--container">
     <div class="post__container">
       <h2>Posts</h2>
       <div class="card__container">
-        <div
-          class="card"
-          *ngFor="let post of posts()"
-          [routerLink]="['/blog/post', post.attributes.slug]"
-        >
+        @for (post of posts(); track post){
+        <div class="card" [routerLink]="['/blog/post', post.attributes.slug]">
           <div class="image__container">
             <img
               [src]="
@@ -30,12 +25,11 @@
             <h3>{{ post.attributes.title | titlecase }}</h3>
 
             <div class="badge__container">
-              <span
-                class="badge"
-                *ngFor="let technology of post.attributes.technology"
-              >
+              @for (technology of post.attributes.technology; track technology){
+              <span class="badge">
                 {{ technology | titlecase }}
               </span>
+              }
             </div>
 
             <span class="published">
@@ -46,18 +40,15 @@
             </span>
           </div>
         </div>
+        }
       </div>
     </div>
 
     <div class="courses__container">
       <h2>Cursos</h2>
       <div class="card__container">
-        <a
-          class="card"
-          *ngFor="let course of courses()"
-          [href]="course.attributes.url"
-          target="_blank"
-        >
+        @for (course of courses(); track course){
+        <a class="card" [href]="course.attributes.url" target="_blank">
           <div class="image__container">
             <img
               [src]="
@@ -71,12 +62,12 @@
             <h3>{{ course.attributes.title | titlecase }}</h3>
 
             <div class="badge__container">
-              <span
-                class="badge"
-                *ngFor="let technology of course.attributes.technology"
-              >
+              @for (technology of course.attributes.technology; track
+              technology){
+              <span class="badge">
                 {{ technology | titlecase }}
               </span>
+              }
             </div>
 
             <span class="published">
@@ -87,7 +78,9 @@
             </span>
           </div>
         </a>
+        }
       </div>
     </div>
   </article>
+  }
 </section>

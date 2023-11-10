@@ -19,15 +19,21 @@
 
   <article class="post__container container">
     <h2>Últimos Post</h2>
-    <div class="card__container" *ngIf="posts(); else skeleton">
-      <app-card-post
-        *ngFor="let post of posts(); index as index; trackBy: trackByFn"
-        [post]="post"
-      />
+    @if (posts()) {
+    <div class="card__container">
+      @for (post of posts(); track post) {
+      <app-card-post [post]="post" />
+      }
     </div>
+
+    }@else {
+    <app-skeleton-post-card />
+    }
   </article>
 
-  <div class="button__container" *ngIf="showButtonPage()">
+  @if (showButtonPage()) {
+
+  <div class="button__container">
     <button
       class="button custom__button--line"
       (click)="nextPage()"
@@ -36,8 +42,5 @@
       Ver más
     </button>
   </div>
+  }
 </section>
-
-<ng-template #skeleton>
-  <app-skeleton-post-card />
-</ng-template>

@@ -30,7 +30,6 @@ $portfolio-v4-theme: mat.define-light-theme((color: (primary: $portfolio-v4-prim
 @include mat.all-component-themes($portfolio-v4-theme);
 @import "@angular/cdk/overlay-prebuilt.css";
 
-/* You can add global styles to this file, and also import other style files */
 @import "variables.scss";
 @import "normalize.scss";
 @import "primeicons/primeicons.css";
@@ -85,6 +84,10 @@ a {
   font-size: 1rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 .custom__button--line {
   background-color: transparent;
   border: 1px solid $color-white;
@@ -134,6 +137,11 @@ a {
 }
 
 
-// :host ::ng-deep div .p-sidebar-mask {
-//   z-index: none !important;
+// ::view-transition-old(root),
+// /* Screenshot of the view of the page we are leaving */
+// ::view-transition-new(root)
+
+// /* Representation of the new page view */
+//   {
+//   animation-duration: 500ms;
 // }

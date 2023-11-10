@@ -4,9 +4,9 @@
   </div>
 
   <article class="projects__card--container">
+    @for (project of projectsFilter(); track project) {
     <div
       class="card"
-      *ngFor="let project of projectsFilter()"
       [style]="project.attributes.important ? 'grid-column: span 2' : ''"
       (click)="openDialog(project.attributes)"
     >
@@ -23,5 +23,6 @@
         </div>
       </div>
     </div>
+    }
   </article>
 </section>

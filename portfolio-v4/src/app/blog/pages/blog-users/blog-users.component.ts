@@ -1,16 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-blog-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './blog-users.component.html',
-  styleUrls: ['./blog-users.component.scss'],
+  styleUrl: './blog-users.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogUsersComponent implements OnInit {
-  ngOnInit(): void {
-    document.documentElement.scrollTop = 0;
-  }
-}
+export class BlogUsersComponent {}

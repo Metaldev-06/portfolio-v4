@@ -1,11 +1,15 @@
+@defer (when userData()) {
 <div class="portfolio__container">
-  <ng-container *ngIf="!loading()">
-    <app-header />
+  <app-header />
 
-    <main>
-      <router-outlet />
-    </main>
+  <main>
+    <router-outlet />
+  </main>
 
-    <app-footer />
-  </ng-container>
+  <app-footer />
 </div>
+}@loading ( ) {
+<app-loader />
+} @error {
+<p>Error al cargar los datos</p>
+}

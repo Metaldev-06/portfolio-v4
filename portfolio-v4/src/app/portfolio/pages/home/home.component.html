@@ -1,9 +1,15 @@
-<ng-container *ngIf="userData().projects">
-  <app-hero-section />
+<app-hero-section />
 
-  <app-about-me-section [aboutMe]="userData()" />
-
-  <app-projects-section [projects]="userData().projects.data" />
-
-  <app-blogs-section />
-</ng-container>
+@defer (on viewport) {
+<app-about-me-section [aboutMe]="userData()" />
+}@placeholder {
+<p>loading</p>
+} @defer (on viewport) {
+<app-projects-section [projects]="userData().projects.data" />
+}@placeholder {
+<p>loading</p>
+} @defer (on viewport) {
+<app-blogs-section />
+}@placeholder {
+<p>loading</p>
+}

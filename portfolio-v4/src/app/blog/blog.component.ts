@@ -1,17 +1,17 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlogHeaderComponent } from './layout/blog-header/blog-header.component';
-import { FooterComponent } from '../portfolio/layout/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { FooterComponent } from '../portfolio/layout/footer/footer.component';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [BlogHeaderComponent, FooterComponent, RouterOutlet],
+  imports: [BlogHeaderComponent, RouterOutlet, FooterComponent],
   templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss'],
+  styleUrl: './blog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent {
   ngOnInit(): void {
     document.documentElement.scrollTop = 0;
   }

@@ -6,10 +6,12 @@ describe('BlogSearcherComponent', () => {
   let component: BlogSearcherComponent;
   let fixture: ComponentFixture<BlogSearcherComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [BlogSearcherComponent]
-    });
+    })
+    .compileComponents();
+    
     fixture = TestBed.createComponent(BlogSearcherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

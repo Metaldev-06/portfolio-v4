@@ -6,7 +6,7 @@
   <div class="header">
     <div class="header__logo">
       <img
-        src="../../../../assets/logo_solo_nuevo.svg"
+        src="/assets/logo_solo_nuevo.svg"
         alt="Metaldev Logo"
         width="60"
         height="61"
@@ -16,19 +16,20 @@
 
     <nav class="header__navbar">
       <ul class="navbar__list">
+        @for (item of navItems(); track item) {
         <li
           class="navbar__list--item"
-          *ngFor="let item of navItems()"
           [routerLink]="[item.route]"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
         >
           {{ item.name | uppercase }}
         </li>
+        }
       </ul>
 
       <button (click)="sidebarVisible2 = true">
-        <i class="pi pi-align-center"></i>
+        <i class="pi pi-bars"></i>
       </button>
     </nav>
   </div>
@@ -43,15 +44,16 @@
     <h3>Menú</h3>
 
     <ul class="navbar__list--secondary">
+      @for (item of navItems(); track item) {
       <li
         class="navbar__list--item"
-        *ngFor="let item of navItems()"
         [routerLink]="[item.route]"
         routerLinkActive="active--secondary"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         {{ item.name | uppercase }}
       </li>
+      }
     </ul>
   </div>
 </p-sidebar>

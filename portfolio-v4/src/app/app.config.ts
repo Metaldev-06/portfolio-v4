@@ -1,21 +1,26 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  provideRouter,
+  withComponentInputBinding,
+  withViewTransitions,
+} from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { routes } from './app.routes';
-import { ClipboardOptions, MarkdownModule } from 'ngx-markdown';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 import localeEsAr from '@angular/common/locales/es-AR';
 import { registerLocaleData } from '@angular/common';
+
+import { ClipboardOptions, MarkdownModule } from 'ngx-markdown';
+
+import { routes } from './app.routes';
 import { ClipboardButtonComponent } from './shared/clipboard-button/clipboard-button.component';
 
 registerLocaleData(localeEsAr);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(routes, withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(),
     importProvidersFrom([
       MarkdownModule.forRoot({
