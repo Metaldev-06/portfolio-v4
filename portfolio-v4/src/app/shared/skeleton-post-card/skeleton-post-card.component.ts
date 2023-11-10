@@ -1,3 +1,4 @@
+import { NgFor } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { SkeletonModule } from 'primeng/skeleton';
@@ -5,7 +6,7 @@ import { SkeletonModule } from 'primeng/skeleton';
 @Component({
   selector: 'app-skeleton-post-card',
   standalone: true,
-  imports: [SkeletonModule],
+  imports: [NgFor, SkeletonModule],
   templateUrl: './skeleton-post-card.component.html',
   styleUrls: ['./skeleton-post-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

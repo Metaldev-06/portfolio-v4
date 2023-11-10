@@ -6,7 +6,7 @@ import { PostDatum } from '@src/app/core/interfaces/post-data/post-data';
 @Component({
   selector: 'app-card-post',
   standalone: true,
-  imports: [RouterLink, TitleCasePipe, DatePipe],
+  imports: [NgFor, RouterLink, TitleCasePipe, DatePipe],
   templateUrl: './card-post.component.html',
   styleUrls: ['./card-post.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

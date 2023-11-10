@@ -1,9 +1,10 @@
-import { DatePipe, TitleCasePipe } from '@angular/common';
+import { DatePipe, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   Input,
+  OnInit,
   inject,
   signal,
 } from '@angular/core';
@@ -16,12 +17,19 @@ import { MarkdownModule } from 'ngx-markdown';
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [TitleCasePipe, DatePipe, MarkdownModule, ClipboardButtonComponent],
+  imports: [
+    NgFor,
+    TitleCasePipe,
+    DatePipe,
+    NgIf,
+    MarkdownModule,
+    ClipboardButtonComponent,
+  ],
   templateUrl: './blog-post.component.html',
-  styleUrl: './blog-post.component.scss',
+  styleUrls: ['./blog-post.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogPostComponent {
+export class BlogPostComponent implements OnInit {
   @Input() public slug = '';
 
   public post = signal<DatumAttributes>({} as DatumAttributes);

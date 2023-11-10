@@ -1,10 +1,11 @@
-import { NgClass, UpperCasePipe } from '@angular/common';
+import { NgClass, NgFor, UpperCasePipe } from '@angular/common';
 import {
-  ChangeDetectionStrategy,
   Component,
-  HostListener,
+  ChangeDetectionStrategy,
   signal,
+  HostListener,
 } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { SidebarModule } from 'primeng/sidebar';
@@ -18,14 +19,16 @@ interface NavItem {
   selector: 'app-header',
   standalone: true,
   imports: [
-    NgClass,
     RouterLink,
-    UpperCasePipe,
     RouterLinkActive,
+    UpperCasePipe,
+    NgClass,
+    NgFor,
     SidebarModule,
+    FormsModule,
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {

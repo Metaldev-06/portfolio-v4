@@ -1,8 +1,9 @@
-import { DatePipe, TitleCasePipe } from '@angular/common';
+import { DatePipe, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  OnInit,
   inject,
   signal,
 } from '@angular/core';
@@ -15,12 +16,12 @@ import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.serv
 @Component({
   selector: 'app-blog-searcher',
   standalone: true,
-  imports: [TitleCasePipe, DatePipe, RouterLink],
+  imports: [NgFor, TitleCasePipe, DatePipe, RouterLink, NgIf],
   templateUrl: './blog-searcher.component.html',
-  styleUrl: './blog-searcher.component.scss',
+  styleUrls: ['./blog-searcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogSearcherComponent {
+export class BlogSearcherComponent implements OnInit {
   public posts = signal<PostDatum[]>([]);
   public courses = signal<Datum[]>([]);
   public query = signal<string>('');

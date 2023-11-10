@@ -1,24 +1,25 @@
+import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  OnInit,
   inject,
   signal,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Datum } from '@src/app/core/interfaces/course-data/course-data';
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
-import { SkeletonPostCardComponent } from '../../../shared/skeleton-post-card/skeleton-post-card.component';
 
 @Component({
   selector: 'app-blog-courses',
   standalone: true,
-  imports: [SkeletonPostCardComponent],
+  imports: [NgFor, NgIf],
   templateUrl: './blog-courses.component.html',
-  styleUrl: './blog-courses.component.scss',
+  styleUrls: ['./blog-courses.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogCoursesComponent {
+export class BlogCoursesComponent implements OnInit {
   public courses = signal<Datum[]>([]);
 
   private readonly blogDataService = inject(BlogDataService);

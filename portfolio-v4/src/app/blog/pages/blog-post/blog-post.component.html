@@ -1,11 +1,8 @@
-@if (post()) {
-<section class="post__container container">
+<section class="post__container container" *ngIf="post()">
   <article class="header__post">
-    @if (post().image) {
-    <div class="image__container">
+    <div class="image__container" *ngIf="post().image">
       <img [src]="post().image.data.attributes.url" [alt]="post().title" />
     </div>
-    }
 
     <div class="text__container">
       <h1>{{ post().title | titlecase }}</h1>
@@ -14,11 +11,9 @@
         post().publishedAt | date : "longDate" : "UTC-3" : "es-AR"
       }}</span>
 
-      @for (technology of post().technology; track technology) {
-      <div class="badge">
+      <div class="badge" *ngFor="let technology of post().technology">
         <span>{{ technology | titlecase }}</span>
       </div>
-      }
 
       <p class="description">{{ post().description }}</p>
     </div>
@@ -33,4 +28,3 @@
     ></markdown>
   </article>
 </section>
-}

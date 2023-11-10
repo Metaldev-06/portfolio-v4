@@ -1,7 +1,9 @@
+import { NgFor } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  OnInit,
   inject,
   signal,
 } from '@angular/core';
@@ -14,12 +16,12 @@ import { TitleComponent } from '@src/app/shared/title/title.component';
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [AtroposComponent, TitleComponent],
+  imports: [AtroposComponent, NgFor, TitleComponent],
   templateUrl: './skills.component.html',
-  styleUrl: './skills.component.scss',
+  styleUrls: ['./skills.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SkillsComponent {
+export class SkillsComponent implements OnInit {
   public skills = signal<SkillsDatum[]>([]);
   public frontend = signal<SkillsDatum[]>([]);
   public backend = signal<SkillsDatum[]>([]);

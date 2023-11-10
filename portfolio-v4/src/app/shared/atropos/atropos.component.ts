@@ -4,7 +4,12 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
+import {
+  NgClass,
+  NgIf,
+  NgTemplateOutlet,
+  TitleCasePipe,
+} from '@angular/common';
 
 import Atropos from 'atropos';
 import { ImagePipe } from '../pipes/image-pipe/image-pipe.pipe';
@@ -16,7 +21,7 @@ import {
 @Component({
   selector: 'app-atropos',
   standalone: true,
-  imports: [NgClass, ImagePipe, TitleCasePipe, NgTemplateOutlet],
+  imports: [NgClass, ImagePipe, TitleCasePipe, NgIf, NgTemplateOutlet],
   templateUrl: './atropos.component.html',
   styleUrls: ['./atropos.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

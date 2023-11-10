@@ -6,12 +6,10 @@ describe('HeroSectionComponent', () => {
   let component: HeroSectionComponent;
   let fixture: ComponentFixture<HeroSectionComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [HeroSectionComponent]
-    })
-    .compileComponents();
-    
+    });
     fixture = TestBed.createComponent(HeroSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -5,26 +5,24 @@
     <div class="skill__stack">
       <h2>Frontend</h2>
       <div class="skills__content">
-        @for (skill of frontend();track skill ; let index = $index) {
         <app-atropos
+          *ngFor="let skill of frontend(); let i = index"
           [item]="skill.attributes"
           [clase]="skill.attributes.name"
           [isPrimary]="true"
         ></app-atropos>
-        }
       </div>
     </div>
 
     <div class="skill__stack">
       <h2>Backend</h2>
       <div class="skills__content">
-        @for (skill of backend();track skill ; let index = $index) {
         <app-atropos
+          *ngFor="let skill of backend(); let i = index"
           [item]="skill.attributes"
           [clase]="skill.attributes.name"
           [isPrimary]="true"
         ></app-atropos>
-        }
       </div>
     </div>
 
@@ -32,13 +30,12 @@
       <h2>Base de Datos</h2>
 
       <div class="skills__content">
-        @for (skill of database();track skill ; let index = $index) {
         <app-atropos
+          *ngFor="let skill of database(); let i = index"
           [item]="skill.attributes"
           [clase]="skill.attributes.name"
           [isPrimary]="true"
         ></app-atropos>
-        }
       </div>
     </div>
 
@@ -46,13 +43,12 @@
       <h2>Librerías</h2>
 
       <div class="skills__content">
-        @for (skill of library();track skill ; let index = $index) {
         <app-atropos
+          *ngFor="let skill of library(); let i = index"
           [item]="skill.attributes"
           [clase]="skill.attributes.name"
           [isPrimary]="true"
         ></app-atropos>
-        }
       </div>
     </div>
   </article>

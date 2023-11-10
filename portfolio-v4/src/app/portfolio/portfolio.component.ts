@@ -2,37 +2,35 @@ import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  OnInit,
   inject,
-  signal,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-
 import { HeaderComponent } from './layout/header/header.component';
+import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './layout/footer/footer.component';
-import { DataAttributes } from '../core/interfaces/home-data/home-data';
 import { HomeDataService } from '../core/services/home-data/home-data.service';
-import { LoaderComponent } from '../shared/loader/loader.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NgIf } from '@angular/common';
+import { signal } from '@angular/core';
+import { DataAttributes } from '../core/interfaces/home-data/home-data';
 
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet, FooterComponent, LoaderComponent],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet, NgIf],
   templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.scss',
+  styleUrls: ['./portfolio.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PortfolioComponent {
-  public loading = signal<boolean>(false);
+export class PortfolioComponent implements OnInit {
+  public loading = signal<boolean>(true);
 
-  public userData = signal<DataAttributes>({} as DataAttributes);
+  private userData = signal<DataAttributes>({} as DataAttributes);
 
   private readonly homeDataService = inject(HomeDataService);
   private readonly destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.loading.set(true);
     this.homeDataService.homeData$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((resp) => {

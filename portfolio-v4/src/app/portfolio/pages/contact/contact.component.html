@@ -13,7 +13,7 @@
 
       <div class="email">
         <p class="contact__subtitle">E-MAIL:</p>
-        <a href="mailto:fernydiaz62@gmail.com">fernydiaz62&#64;gmail.com</a>
+        <a href="mailto:fernydiaz62@gmail.com">fernydiaz62@gmail.com</a>
       </div>
     </article>
     <article class="contact__content contact__rigth">
@@ -61,20 +61,18 @@
         </div>
 
         <button type="submit" class="button">
-          @if (!isLoading()) {
-          <span>ENVIAR MENSAJE</span>
-          }@else {
-          <span>
-            ENVIANDO MENSAJE
-            <i class="pi pi-spin pi-spinner"></i>
-          </span>
-          }
+          <span *ngIf="!isLoading(); else loading">ENVIAR MENSAJE</span>
         </button>
       </form>
     </article>
   </div>
 </section>
 
-@if (message().length > 0) {
-<span class="message">{{ message() }}</span>
-}
+<ng-template #loading>
+  <span>
+    ENVIANDO MENSAJE
+    <i class="pi pi-spin pi-spinner"></i>
+  </span>
+</ng-template>
+
+<span class="message" *ngIf="message().length > 0">{{ message() }}</span>

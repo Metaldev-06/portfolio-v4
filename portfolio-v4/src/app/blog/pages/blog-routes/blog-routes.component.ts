@@ -1,11 +1,15 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-blog-routes',
   standalone: true,
   imports: [],
   templateUrl: './blog-routes.component.html',
-  styleUrl: './blog-routes.component.scss',
+  styleUrls: ['./blog-routes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogRoutesComponent {}
+export class BlogRoutesComponent implements OnInit {
+  ngOnInit(): void {
+    document.documentElement.scrollTop = 0;
+  }
+}

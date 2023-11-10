@@ -13,11 +13,9 @@
       post.attributes.publishedAt | date : "longDate" : "UTC-3" : "es-AR"
     }}</span>
 
-    @for (technology of post.attributes.technology; track technology) {
-    <div class="badge">
+    <div class="badge" *ngFor="let technology of post.attributes.technology">
       <span>{{ technology | titlecase }}</span>
     </div>
-    }
 
     <p>{{ post.attributes.description }}</p>
   </div>

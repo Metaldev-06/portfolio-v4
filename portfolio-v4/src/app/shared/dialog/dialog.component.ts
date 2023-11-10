@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { DIALOG_DATA } from '@angular/cdk/dialog';
-import { NgClass, TitleCasePipe } from '@angular/common';
+import { NgClass, NgFor, NgIf, TitleCasePipe } from '@angular/common';
 import { ImagePipe } from '../pipes/image-pipe/image-pipe.pipe';
 
 @Component({
   selector: 'app-dialog',
   standalone: true,
-  imports: [TitleCasePipe, ImagePipe, NgClass],
+  imports: [TitleCasePipe, ImagePipe, NgClass, NgIf, NgFor],
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

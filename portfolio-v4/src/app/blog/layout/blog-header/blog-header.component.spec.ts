@@ -6,12 +6,10 @@ describe('BlogHeaderComponent', () => {
   let component: BlogHeaderComponent;
   let fixture: ComponentFixture<BlogHeaderComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [BlogHeaderComponent]
-    })
-    .compileComponents();
-    
+    });
     fixture = TestBed.createComponent(BlogHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

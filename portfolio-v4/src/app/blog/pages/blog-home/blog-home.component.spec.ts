@@ -6,12 +6,10 @@ describe('BlogHomeComponent', () => {
   let component: BlogHomeComponent;
   let fixture: ComponentFixture<BlogHomeComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [BlogHomeComponent]
-    })
-    .compileComponents();
-    
+    });
     fixture = TestBed.createComponent(BlogHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

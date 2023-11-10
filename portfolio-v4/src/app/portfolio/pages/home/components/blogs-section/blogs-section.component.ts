@@ -1,4 +1,4 @@
-import { NgOptimizedImage } from '@angular/common';
+import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -18,14 +18,16 @@ import { TitleComponent } from '@src/app/shared/title/title.component';
   selector: 'app-blogs-section',
   standalone: true,
   imports: [
+    NgFor,
     NgOptimizedImage,
     TitleComponent,
     RouterLink,
     CardPostComponent,
     SkeletonPostCardComponent,
+    NgIf,
   ],
   templateUrl: './blogs-section.component.html',
-  styleUrl: './blogs-section.component.scss',
+  styleUrls: ['./blogs-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlogsSectionComponent {

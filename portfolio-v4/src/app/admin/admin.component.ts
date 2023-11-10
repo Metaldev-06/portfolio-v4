@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-loader',
+  selector: 'app-admin',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './loader.component.html',
-  styleUrl: './loader.component.scss',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoaderComponent {
+export class AdminComponent {
 
 }

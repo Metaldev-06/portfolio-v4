@@ -31,8 +31,7 @@
   </article>
 
   <article class="aboutMe__services">
-    @for (service of aboutMe.services; track service) {
-    <div class="card__services">
+    <div class="card__services" *ngFor="let service of aboutMe.services">
       <img
         class="background__card"
         src="../../../../../../assets/services_card.jpg"
@@ -43,6 +42,5 @@
 
       <h3>{{ service.name }}</h3>
     </div>
-    }
   </article>
 </section>

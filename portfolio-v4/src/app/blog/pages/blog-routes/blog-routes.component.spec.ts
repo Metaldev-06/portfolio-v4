@@ -6,12 +6,10 @@ describe('BlogRoutesComponent', () => {
   let component: BlogRoutesComponent;
   let fixture: ComponentFixture<BlogRoutesComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [BlogRoutesComponent]
-    })
-    .compileComponents();
-    
+    });
     fixture = TestBed.createComponent(BlogRoutesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

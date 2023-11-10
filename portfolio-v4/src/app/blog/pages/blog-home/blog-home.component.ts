@@ -1,8 +1,9 @@
-import { NgStyle } from '@angular/common';
+import { NgFor, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
+  OnInit,
   inject,
   signal,
 } from '@angular/core';
@@ -14,6 +15,7 @@ import {
 import { BlogDataService } from '@src/app/core/services/blog-data/blog-data.service';
 import { CardPostComponent } from '@src/app/shared/card-post/card-post.component';
 import { SkeletonPostCardComponent } from '@src/app/shared/skeleton-post-card/skeleton-post-card.component';
+
 import { SkeletonModule } from 'primeng/skeleton';
 
 @Component({
@@ -21,15 +23,17 @@ import { SkeletonModule } from 'primeng/skeleton';
   standalone: true,
   imports: [
     CardPostComponent,
+    NgFor,
     SkeletonModule,
+    NgIf,
     NgStyle,
     SkeletonPostCardComponent,
   ],
   templateUrl: './blog-home.component.html',
-  styleUrl: './blog-home.component.scss',
+  styleUrls: ['./blog-home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BlogHomeComponent {
+export class BlogHomeComponent implements OnInit {
   public posts = signal<PostDatum[]>([]);
   public page = signal<Pagination>({} as Pagination);
   public showButtonPage = signal<boolean>(true);
@@ -45,6 +49,10 @@ export class BlogHomeComponent {
     }
 
     document.documentElement.scrollTop = 0;
+  }
+
+  trackByFn(index: number, item: PostDatum) {
+    return index;
   }
 
   getPosts(page = 1) {

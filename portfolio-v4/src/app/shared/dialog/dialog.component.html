@@ -21,33 +21,27 @@
             }"
           ></i>
         </span>
-
-        @if (data.project.server_status !== null) {
-        <span
-          >Estado del backend:
-          <i
-            class="pi pi-circle-fill"
-            [ngClass]="{
-              online: data.project.server_status,
-              offline: !data.project.server_status
-            }"
-          ></i>
-        </span>
-        } @else {
-        <span title="No necesita un backend">
-          Estado del backend:
-          <i class="pi pi-circle-fill withoutServer"></i>
-        </span>
-        }
+        <ng-container
+          *ngIf="data.project.server_status !== null; else serverStatusNull"
+        >
+          <span
+            >Estado del backend:
+            <i
+              class="pi pi-circle-fill"
+              [ngClass]="{
+                online: data.project.server_status,
+                offline: !data.project.server_status
+              }"
+            ></i>
+          </span>
+        </ng-container>
       </div>
     </div>
 
     <div class="technologies__container">
-      @for (item of data.project.technology; track item) {
-      <span class="tags">
+      <span *ngFor="let item of data.project.technology" class="tags">
         {{ item | titlecase }}
       </span>
-      }
     </div>
 
     <div>
@@ -55,3 +49,10 @@
     </div>
   </article>
 </section>
+
+<ng-template #serverStatusNull>
+  <span title="No necesita un backend">
+    Estado del backend:
+    <i class="pi pi-circle-fill withoutServer"></i>
+  </span>
+</ng-template>
